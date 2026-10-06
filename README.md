@@ -68,3 +68,39 @@ This section has moved here: [https://vitejs.dev/guide/build.html](https://vitej
 ### Troubleshooting
 
 This section has moved here: [https://vitejs.dev/guide/troubleshooting.html](https://vitejs.dev/guide/troubleshooting.html)
+
+## React starter and restaurant app
+
+The original React starter is restored at the browser root (`/`). The restaurant app remains available at `/restaurant`.
+
+The browser-root app is installable as a Progressive Web App (PWA) in Chrome and includes an offline app shell. Serve it over HTTPS (for example, through the Codespaces forwarded HTTPS URL), open it in Chrome, then use the install icon in the address bar or Chrome menu → “Install app” / “Add to home screen”.
+
+Restaurant tables are initialized and migrated to exactly 30 numbered tables (`T1`–`T30`). Existing statuses for those tables are retained.
+
+## Restaurant app authentication and data
+
+When Supabase is configured, the restaurant app authenticates with Supabase email/password accounts. The app then reads the signed-in user's active `employees` profile to determine their role; it does not offer public account registration. The profile table is protected by row-level security in `supabase/schema.sql`.
+
+To enable authentication:
+
+1. Create a Supabase project and run `supabase/schema.sql` in its SQL Editor.
+2. In Supabase Authentication, create the owner account and keep public sign-ups disabled.
+3. Add the owner profile in the SQL Editor, replacing the sample name and email with the account you created:
+
+   ```sql
+   insert into public.employees (id, full_name, role)
+   select id, 'Restaurant Owner', 'owner'
+   from auth.users
+   where lower(email) = lower('owner@example.com')
+   on conflict (id) do update
+     set full_name = excluded.full_name, role = excluded.role, active = true;
+   ```
+
+4. Add `VITE_SUPABASE_URL` and the Supabase **publishable/anon** key as build environment variables (or put them in an ignored `.env.local` for local development). Never put a service-role key in the browser app.
+5. Create each staff account through Supabase Authentication and add its `employees` row with the intended role. The app will reject authenticated users without an active employee profile.
+
+Production builds fail closed and show a configuration message if Supabase is not configured. The four-digit PIN gate is only available during local development without Supabase.
+
+Authentication is enabled independently of data synchronization: restaurant records are still saved to this browser's `localStorage` and are **not yet synchronized between devices**. The existing SQL schema defines normalized business tables, but this client has not yet been migrated to use them.
+
+Managers can add, edit, and remove inventory items; removing an item requires zero stock and no active menu recipe to reference it. Purchase, expense, and waste entries can be cancelled from their respective history lists, with stock adjustments applied to purchases and waste. Managers can remove menu items (past invoices retain their saved item details), while cashiers can remove items from the current cart.

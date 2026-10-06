@@ -16,6 +16,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  direction: rtl;
 }
 
 .App-link {
@@ -28,4 +29,19 @@
 
 .small {
   font-size: 0.75rem;
+}
+
+.install-app-button {
+  margin-top: 12px;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  background: #61dafb;
+  color: #17202b;
+  font-weight: 700;
+}
+
+.install-hint {
+  max-width: 520px;
+  line-height: 1.8;
 }

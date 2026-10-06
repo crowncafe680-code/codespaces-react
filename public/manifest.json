@@ -1,6 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "تطبيق React",
+  "name": "تطبيق React ونظام المطعم",
+  "description": "تطبيق React ونظام إدارة المطعم",
+  "lang": "ar",
+  "dir": "rtl",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +21,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#282c34",
+  "theme_color": "#282c34"
 }
