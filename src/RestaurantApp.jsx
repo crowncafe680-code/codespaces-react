@@ -924,13 +924,15 @@ function App() {
               {authError && <p className="pin-error" role="alert">{authError}</p>}
               <small className="pin-hint">{t('يجب تفعيل حسابك من قبل مدير المطعم.', 'Your account must be enabled by a restaurant manager.')}</small>
             </>
-          ) : import.meta.env.PROD ? (
-            <p className="pin-error" role="alert">
-              {t('تسجيل الدخول غير مُعدّ. أضف إعدادات Supabase إلى بيئة النشر.', 'Authentication is not configured. Add Supabase settings to the deployment environment.')}
-            </p>
           ) : (
             <>
-              <p>{t('أدخل رمز الدخول المكوّن من أربعة أرقام', 'Enter your four-digit PIN')}</p>
+              <p>{t('أدخل رمز الدخول المشترك المكوّن من أربعة أرقام', 'Enter the shared four-digit access PIN')}</p>
+              <p className="storage-warning" role="note">
+                {t(
+                  'تنبيه: هذا الرمز مشترك وليس حماية لحساب المطعم. البيانات تُحفظ على هذا المتصفح فقط ولا تتم مزامنتها.',
+                  'Warning: this shared PIN does not secure a restaurant account. Data is stored only in this browser and is not synchronized.',
+                )}
+              </p>
               <form onSubmit={loginWithPin}>
             <input
               autoFocus
@@ -946,7 +948,7 @@ function App() {
             <button className="primary-btn full-width" type="submit">{t('دخول', 'Sign in')}</button>
               </form>
               {pinError && <p className="pin-error">{pinError}</p>}
-              <small className="pin-hint">{t('الدخول المحلي متاح أثناء التطوير فقط.', 'Local PIN access is only available during development.')}</small>
+              <small className="pin-hint">{t('الدخول برمز مشترك؛ لا تحفظ بيانات حقيقية أو حساسة.', 'Shared PIN access; do not store real or sensitive data.')}</small>
             </>
           )}
         </section>
@@ -988,7 +990,10 @@ function App() {
         <p className="storage-warning" role="status">
           {isSupabaseConfigured
             ? 'تم التحقق من هويتك عبر Supabase. بيانات المطعم ما زالت محفوظة محلياً على هذا المتصفح ولم تُفعّل مزامنتها بعد.'
-            : 'وضع التطوير: الدخول والبيانات محليان على هذا المتصفح فقط.'}
+            : t(
+              'دخول برمز PIN مشترك. البيانات محفوظة على هذا المتصفح فقط ولا تتم مزامنتها بين الأجهزة.',
+              'Shared PIN access. Data is stored only in this browser and is not synchronized between devices.',
+            )}
         </p>
         {operationError && <p className="team-error" role="alert">{operationError}</p>}
         {activeTab === 'dashboard' && (

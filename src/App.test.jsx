@@ -35,6 +35,7 @@ test('shows the restaurant login screen at the browser root', () => {
 
   expect(screen.getByRole('heading', { name: 'تسجيل الدخول' })).toBeDefined();
   expect(screen.getByLabelText('رمز الدخول')).toBeDefined();
+  expect(screen.getByRole('note').textContent).toMatch(/الرمز مشترك/);
 });
 
 test('keeps the restaurant app available at its dedicated route', () => {
