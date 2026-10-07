@@ -1,5 +1,5 @@
-const CACHE_NAME = 'react-restaurant-app-v1';
-const APP_SHELL = ['/', '/manifest.json', '/logo192.png', '/logo512.png', '/favicon.ico'];
+const CACHE_NAME = 'cown-restaurant-app-v2';
+const APP_SHELL = ['/', '/manifest.json', '/cown.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

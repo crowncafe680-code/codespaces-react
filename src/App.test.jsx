@@ -29,13 +29,12 @@ test('rejects an incorrect PIN and requires exactly four digits', () => {
   expect(pinInput.pattern).toBe('[0-9]{4}');
 });
 
-test('shows the original React App screen at the browser root', () => {
+test('shows the restaurant login screen at the browser root', () => {
   window.history.replaceState({}, '', '/');
   render(<StarterApp />);
 
-  expect(screen.getByText(/GitHub Codespaces/)).toBeDefined();
-  expect(screen.getByRole('link', { name: 'تعلّم React' })).toBeDefined();
-  expect(screen.getByRole('link', { name: 'فتح نظام المطعم' }).getAttribute('href')).toBe('/restaurant');
+  expect(screen.getByRole('heading', { name: 'تسجيل الدخول' })).toBeDefined();
+  expect(screen.getByLabelText('رمز الدخول')).toBeDefined();
 });
 
 test('keeps the restaurant app available at its dedicated route', () => {

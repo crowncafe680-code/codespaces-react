@@ -1,47 +1,20 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  direction: rtl;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.heart {
-  color: #ff0000;
-}
-
-.small {
-  font-size: 0.75rem;
-}
-
 .install-app-button {
-  margin-top: 12px;
+  position: fixed;
+  z-index: 1000;
+  inset-inline-end: 20px;
+  bottom: 20px;
   border: 0;
   border-radius: 10px;
-  padding: 12px 20px;
-  background: #61dafb;
-  color: #17202b;
+  padding: 12px 18px;
+  background: #d98d2f;
+  color: #fff;
   font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.install-hint {
-  max-width: 520px;
-  line-height: 1.8;
+@media (max-width: 700px) {
+  .install-app-button {
+    inset-inline-end: 12px;
+    bottom: 12px;
+  }
 }

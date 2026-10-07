@@ -1,29 +1,20 @@
 {
-  "short_name": "تطبيق React",
-  "name": "تطبيق React ونظام المطعم",
-  "description": "تطبيق React ونظام إدارة المطعم",
+  "short_name": "Cown",
+  "name": "Cown | إدارة المطعم ونقطة البيع",
+  "description": "نظام كاون لإدارة المطعم ونقطة البيع والمخزون والتقارير.",
   "lang": "ar",
   "dir": "rtl",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "cown.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#282c34",
-  "theme_color": "#282c34"
+  "background_color": "#f6f3ee",
+  "theme_color": "#1f2b2b"
 }
